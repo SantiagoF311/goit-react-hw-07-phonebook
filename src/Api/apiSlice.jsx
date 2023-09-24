@@ -12,4 +12,4 @@ export const apiSlice = createApi({
     })
 })
 
-export const { useGetContactsQuery } = apiSlice; 
+export const { useGetContactsQuery } = apiSlice;  
