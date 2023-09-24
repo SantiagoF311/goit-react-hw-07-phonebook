@@ -1,4 +1,4 @@
-import { CreateApi, createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import {  createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 
 export const apiSlice = createApi({
     reducerPath: 'api',
