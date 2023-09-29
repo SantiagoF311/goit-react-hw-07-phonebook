@@ -1,10 +1,9 @@
-import Prueba from "./Prueba";
+import Prueba from "./contactsForm";
 
 export const App = () => {
   return (
     <div>
       <Prueba />
-      <h1>D:</h1>
     </div>
   );
 };
