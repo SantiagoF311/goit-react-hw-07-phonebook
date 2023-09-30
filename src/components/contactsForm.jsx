@@ -8,6 +8,7 @@ function ContactsForm() {
 
   const [nameInput, setNameInput] = useState('');
   const [numberInput, setNumberInput] = useState('');
+  const [filteredContacts, setFilteredContacts] = useState([]);  
 
   const handleNameChange = (event) => {
     setNameInput(event.target.value);
@@ -17,8 +18,15 @@ function ContactsForm() {
     setNumberInput(event.target.value);
   };
 
-  if (isLoading) return <div>Loading...</div>;
-  else if (isError) return <div>Error: {error.message}</div>;
+  const handleFilteredContacts = (e) => {
+    const filterValue = e.target.value.toLowerCase().trim();
+
+    const filteredContacts = contacts.filter(contact => {
+      return contact.name.toLowerCase().includes(filterValue) && filterValue !== '';
+    });
+
+    setFilteredContacts(filteredContacts);  
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +47,10 @@ function ContactsForm() {
       setNameInput('');
       setNumberInput('');
     }
-  }
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  else if (isError) return <div>Error: {error.message}</div>;
 
   return (
     <div>
@@ -65,6 +76,18 @@ function ContactsForm() {
           ))}
         </ul>
       </div>
+
+      <form>
+        <h2>Find contacts by name</h2>
+        <input name='filter' type="text" placeholder="Filtrar contactos por nombre" onChange={handleFilteredContacts} />
+        <ul>
+          {filteredContacts.map(contact => (
+            <li key={contact.id}>
+              <p>{contact.name}: {contact.number}</p>
+            </li>
+          ))}
+        </ul>
+      </form>
     </div>
   )
 }

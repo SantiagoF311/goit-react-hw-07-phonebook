@@ -27,7 +27,7 @@ export const apiSlice = createApi({
             }),
             invalidatesTags: ['users'],
         })
-    })
+    }),
 })
 
-export const { useGetContactsQuery, useCreateContactMutation, useDeleteContactMutation } = apiSlice;  
+export const { useGetContactsQuery, useCreateContactMutation, useDeleteContactMutation } = apiSlice; 
